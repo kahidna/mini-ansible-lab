@@ -45,9 +45,9 @@ private_key_file = /root/.ssh/mini-ansible-lab.pem
 inventory      = /etc/ansible/hosts
 ```
 
-#Usage
-- Make sure the mini-ansible-lab.pem have root owner with permission 400 or -r--------. 
-- After that, go to the root directory, and then execute `docker-compose up -d`, this might take few minutes when build the images
+# Usage
+- Make sure the **mini-ansible-lab.pem** owned by root with permission `400` or `-r--------`
+- After that, go to the root project directory, and then execute `docker-compose up -d`, this might take few minutes when build the images
 - when the compose success built,enter the master container using command `docker exec -it master_node bash`
 - next, we can test whether the ansible works or not using command `ansible -m ping all`. this should return output like this
 
@@ -63,7 +63,7 @@ root@master-node:/# ansible -m ping all
 }
 </pre>
 
-- if you want to add more node, just add this newline below the _server3_ on **docker-compose.yml**
+- if you want to add more node, just add this newline below after the _server2_ part on **docker-compose.yml**
 <pre>
    server3:
     image: mini-ansible-lab/client-node
