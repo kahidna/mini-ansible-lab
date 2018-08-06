@@ -45,6 +45,59 @@ private_key_file = /root/.ssh/mini-ansible-lab.pem
 inventory      = /etc/ansible/hosts
 ```
 
+#Usage
+- Make sure the mini-ansible-lab.pem have root owner with permission 400 or -r--------. 
+- After that, go to the root directory, and then execute `docker-compose up -d`, this might take few minutes when build the images
+- when the compose success built,enter the master container using command `docker exec -it master_node bash`
+- next, we can test whether the ansible works or not using command `ansible -m ping all`. this should return output like this
+
+<pre>
+root@master-node:/# ansible -m ping all
+172.10.212.4 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+172.10.212.3 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+</pre>
+
+- if you want to add more node, just add this newline below the _server3_ on **docker-compose.yml**
+<pre>
+   server3:
+    image: mini-ansible-lab/client-node
+    container_name: server3
+    volumes:
+      - ./ssh-node-client:/root/.ssh
+    ports: ["22"]
+    hostname: server3
+    networks:
+     mini-ansible-lab:
+      ipv4_address: 172.10.212.5
+</pre>
+- modify _hosts_ file on **master-ansible** folder, by add new ip address from server3 at the "all" section.
+- stop the containers using `docker-compose down` command. and then start the containers using `docker-compose up -d`
+- enter the master node again, and re check using ansible ping. the return should be like this :
+
+<pre>
+root@master-node:/# ansible -m ping all
+172.10.212.5 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+172.10.212.4 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+172.10.212.3 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+</pre>
+
+
+
 # Issue and suggestion
 Please feel free to create issue if you have suggestion or problem with this repository. :)
 
