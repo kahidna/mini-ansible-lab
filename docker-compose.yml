@@ -1,0 +1,53 @@
+version: "3.5"
+
+services:
+  master_node:
+    build:
+     context: ./images/master-image
+    image: mini-ansible-lab/master-node
+    container_name: master_node
+    volumes:
+     - ./master-node-volume:/root/volume
+     - ./ssh-node-master:/root/.ssh
+     - ./master-ansible:/etc/ansible
+    ports:
+      - "4422:22"
+    hostname: master-node
+    networks:
+     mini-ansible-lab:
+       ipv4_address: 172.10.212.2
+
+
+  server1:
+    build :
+     context: ./images/client-image
+    image: mini-ansible-lab/client-node
+    container_name: server1
+    volumes:
+      - ./ssh-node-client:/root/.ssh
+    ports: ["22"]
+    hostname: server1
+    networks:
+     mini-ansible-lab:
+      ipv4_address: 172.10.212.3
+
+
+  server2:
+    image: mini-ansible-lab/client-node
+    container_name: server2
+    volumes:
+      - ./ssh-node-client:/root/.ssh
+    ports: ["22"]
+    hostname: server2
+    networks:
+     mini-ansible-lab:
+      ipv4_address: 172.10.212.4
+
+networks:
+  mini-ansible-lab:
+    name : mini_ansible_lab
+    driver: bridge
+    ipam:
+      driver: default
+      config: 
+        - subnet: 172.10.212.0/24
