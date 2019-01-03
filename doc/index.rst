@@ -104,8 +104,8 @@ Usage
 Limitation
 ----------
 below is the limitation of this ansible lab :
-- limit 1
-- limit 2
+ * limit 1
+ * limit 2
 
 Issue and suggestion
 --------------------
