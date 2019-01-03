@@ -28,16 +28,15 @@ For more convenient when we want to re-use the repository, I use docker volume f
    |-- ssh-node-master
        |-- mini-ansible-lab.pem     - private key of the pair key
        |-- mini-ansible-lab.pub     - public key of the pair key
-    
-
 This repository use <a href="https://github.com/rastasheep/ubuntu-sshd">rastasheep ubuntu-sshd</a> as base image (which using ubuntu as base os) for the each container. You can check the image on docker hub repository on <a href="https://github.com/rastasheep/ubuntu-sshd">here</a>. And if you want to change the base image you need to modify **docker-compose.yml** on image section, and also change the base os/image n **Dockerfile**.
 
 Environment
 -----------
-Here is the environment when I create the repository and deploy it on my local machine :   
-- ubuntu 18.04.1 LTS
-- docker-compose 1.22.0
-- docker 18.03.1-ce
+Here is the environment when I create the repository and deploy it on my local machine:  
+
+* ubuntu 18.04.1 LTS
+* docker-compose 1.22.0
+* docker 18.03.1-ce
 
 Some configuration already changed by me to make sure this repo ready to use, here is the configuration
 changed on ansible.cfg :
@@ -103,9 +102,12 @@ Usage
 
 Limitation
 ----------
-below is the limitation of this ansible lab :
- * limit 1
- * limit 2
+below is the limitation of this ansible lab:
+
+* limit 1
+* limit 2
+
+
 
 Issue and suggestion
 --------------------
