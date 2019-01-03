@@ -28,7 +28,7 @@ For more convenient when we want to re-use the repository, I use docker volume f
    |-- ssh-node-master
        |-- mini-ansible-lab.pem     - private key of the pair key
        |-- mini-ansible-lab.pub     - public key of the pair key
-This repository use <a href="https://github.com/rastasheep/ubuntu-sshd">rastasheep ubuntu-sshd</a> as base image (which using ubuntu as base os) for the each container. You can check the image on docker hub repository on <a href="https://github.com/rastasheep/ubuntu-sshd">here</a>. And if you want to change the base image you need to modify **docker-compose.yml** on image section, and also change the base os/image n **Dockerfile**.
+This repository use rastasheep,ubuntu-sshd_. as base image (which using ubuntu as base os) for the each container. You can check the image on docker hub repository on here_. And if you want to change the base image you need to modify **docker-compose.yml** on image section, and also change the base os/image n **Dockerfile**.
 
 Environment
 -----------
@@ -50,10 +50,10 @@ changed on ansible.cfg :
 
 Usage
 -----
-- Make sure the **mini-ansible-lab.pem** owned by root with permission `400` or `-r--------`
-- After that, go to the root project directory, and then execute `docker-compose up -d`, this might take few minutes when build the images
-- when the compose success built,enter the master container using command `docker exec -it master_node bash`
-- next, we can test whether the ansible works or not using command `ansible -m ping all`. this should return output like this
+- Make sure the **mini-ansible-lab.pem** owned by root with permission ``400`` or ``-r--------``
+- After that, go to the root project directory, and then execute ``docker-compose up -d``, this might take few minutes when build the images
+- when the compose success built,enter the master container using command ``docker exec -it master_node bash``
+- next, we can test whether the ansible works or not using command ``ansible -m ping all``. this should return output like this
 
 .. ping-node::
  root@master-node:/# ansible -m ping all
@@ -66,7 +66,7 @@ Usage
      "ping": "pong"
  }
 
-- if you want to add more node, just add this newline below after the _server2_ part on **docker-compose.yml**
+- if you want to add more node, just add this newline below after the *server2* part on **docker-compose.yml**
 
 .. add-more-node::
    server3:
@@ -80,8 +80,8 @@ Usage
      mini-ansible-lab:
       ipv4_address: 172.10.212.5
 
-- modify _hosts_ file on **master-ansible** folder, by add new ip address from server3 at the "all" section.
-- stop the containers using `docker-compose down` command. and then start the containers using `docker-compose up -d`
+- modify *hosts* file on **master-ansible** folder, by add new ip address from *server3* at the "all" section.
+- stop the containers using ``docker-compose down`` command. and then start the containers using ``docker-compose up -d``
 - enter the master node again, and re check using ansible ping. the return should be like this :
 
 .. ansible-ping-all::
@@ -118,5 +118,7 @@ License
 License under MIT_.
 
 .. _MIT: https://opensource.org/licenses/MIT
+.. _rastasheep,ubuntu-sshd: https://github.com/rastasheep/ubuntu-sshd
+.. _here: https://github.com/rastasheep/ubuntu-sshd
 
 Copyright (c) 2018 Alfin Hidayat
