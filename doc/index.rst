@@ -28,7 +28,7 @@ For more convenient when we want to re-use the repository, I use docker volume f
    |-- ssh-node-master
        |-- mini-ansible-lab.pem     - private key of the pair key
        |-- mini-ansible-lab.pub     - public key of the pair key
-This repository use rastasheep,ubuntu-sshd_. as base image (which using ubuntu as base os) for the each container. You can check the image on docker hub repository on here_. And if you want to change the base image you need to modify **docker-compose.yml** on image section, and also change the base os/image n **Dockerfile**.
+This repository use rastasheep, ubuntu-sshd_. as base image (which using ubuntu as base os) for the each container. You can check the image on docker hub repository on here_. And if you want to change the base image you need to modify **docker-compose.yml** on image section, and also change the base os/image n **Dockerfile**.
 
 Environment
 -----------
@@ -118,7 +118,7 @@ License
 License under MIT_.
 
 .. _MIT: https://opensource.org/licenses/MIT
-.. _rastasheep,ubuntu-sshd: https://github.com/rastasheep/ubuntu-sshd
+.. _ubuntu-sshd: https://github.com/rastasheep/ubuntu-sshd
 .. _here: https://github.com/rastasheep/ubuntu-sshd
 
 Copyright (c) 2018 Alfin Hidayat
