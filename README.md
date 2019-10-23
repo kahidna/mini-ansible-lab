@@ -47,7 +47,7 @@ inventory      = /etc/ansible/hosts
 
 Usage
 -----
-- Make sure the **mini-ansible-lab.pem** owned by root with permission `400` or `-r--------`
+- Make sure the **mini-ansible-lab.pem** key on directory **ssh-node-master** owned by root with permission `400`or `600`    
 - After that, go to the root project directory, and then execute `docker-compose up -d`, this might take few minutes when build the images
 - when the compose success built,enter the master container using command `docker exec -it master_node bash`
 - next, we can test whether the ansible works or not using command `ansible -m ping all`. this should return output like this
